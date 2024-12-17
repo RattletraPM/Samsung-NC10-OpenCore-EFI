@@ -17,4 +17,11 @@ EFI and related hackintosh resources to run Mac OS X 10.6.3 Snow Leopard on your
 4) The stock Wi-Fi card should be incompatible with Snow Leopard (iirc) and should be replaced with a compatible one if you want working Wi-Fi. I've replaced mine with a RT2700E and included its driver install pakcage (STA_RT2860D-1.2.2.0UI-3.0.0.0_2010_05_18.dmg) as it seems to be somewhat hard to find on the net, but unless you replace yours with the same exact chipset as mine, you should instead follow whichever instructions are for the specific chipset you choose
 
 ### FAQ
-Coming soon
+**- Why does this only work with Mac OS X 10.6.3?**
+Getting Mac OS X 10.6.2 or later to boot on an Intel Atom CPU requires a custom Mach kernel, as this processor family has never been used by real Macs and Apple added a CPU check preventing OS X's kernel from booting on an Atom starting from said version. This means you *don't* need a custom kernel for 10.6.1 or earlier, but you may encounter issues not addressed by this EFI or guide. At the same time, every Snow Leopard version comes with a slightly different Mach kernel, meaning they are *not* interchangeable between releases: a custom Mach kernel for 10.6.3 *won't* work on 10.6.8, for example. Still, custom kernels for Atom CPUs were made for every Snow Leopard release and they can be found online with relative ease, but they may require extra work to get running on the NC10 (and, reportedly, some are more stable than others). In a nutshell, what I've provided in this repo is a stable, fully working configuration with no major issues - other versions may work, but *here be dragons*.
+
+
+**- Are all the SSDTs included in this EFI really needed?**
+Likely not. SSDT-EC, SSDT-PNLF and SSDT-XOSI are definitely required for a variety of reasons, but you might still be able to boot without the others. However, all SSDTs found here have been generated specifically for the NC10 using SSDTTime and the addition of SSDT-HPET, SSDT-PMC and SSDT-USBX doesn't seem to have any negative consequences, so they're still included both for reference and just in case some specific configuration/model variation needs them.
+
+*(FAQ is still WIP)*
